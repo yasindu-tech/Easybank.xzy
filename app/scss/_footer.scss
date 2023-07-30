@@ -1,0 +1,80 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.footer{
+    background-color: v.$darkBlue;
+    padding: 30px 0;
+    
+    &__img{
+        &__logo{
+
+            padding: 20px 0;
+        }
+
+        &__social-media{
+
+            >img{
+                padding: 5px;
+
+            }
+        }
+    }
+
+    &__links{
+        padding-top: 10px;
+        padding-bottom: 25px;
+
+        &__1,&__2{
+            >a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                color: v.$white;
+                margin-top: 15px;
+            }
+
+        }
+    }
+
+    &__cta{
+        padding: 10px 0;
+
+        >p{
+            padding-top: 15px;
+            font-size: 13px;
+            color: v.$lightGrayishBlue;
+        }
+    }
+    
+
+
+}
+
+//desktop styles
+
+@include m.breakpoint-up(large){
+    .footer{
+        text-align: left;
+        padding-left: 100px;
+        padding-right: 100px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+
+        &__links{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        &__cta{
+            padding-left: 200px;
+        }
+
+    }
+    
+}
+
+
+
+
+

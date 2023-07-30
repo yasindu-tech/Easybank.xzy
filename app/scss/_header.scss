@@ -1,0 +1,158 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.header{
+
+    nav{
+        padding: 1.5rem;
+    }
+
+    &__logo{
+        img{
+
+        }
+    }
+
+    &__menu{//mobile
+
+        >span{
+            display: block;
+            width: 1.625rem;
+            height: 0.125rem;
+            background-color: v.$darkBlue;
+            transition: 300ms ease-in-out;
+            transform-origin: 3px 1px;
+
+            &:not(:last-child){
+                margin-bottom: 5px;
+            }
+
+           
+        }
+
+        &.open{
+            
+
+            >span:first-child{
+                transform: rotate(45deg);
+
+            }
+            >span:nth-child(2){
+                opacity: 0;
+
+            }
+            >span:last-child{
+                transform: rotate(-45deg);
+
+            }
+
+            
+
+        }
+
+    }
+
+    &__links{
+        
+        >a{
+            color: v.$grayishBlue;
+            position:relative;
+            padding-bottom: 1.875rem;
+
+            &:not(:last-child){
+                margin-right: 2rem;
+            }
+
+            &::before{
+        
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 0.25rem;
+                background:linear-gradient(to right,v.$limeGreen,v.$brightCyan);
+                bottom: 0;
+                left: 0;
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform .3s ease-in-out;
+                
+            }
+
+            &:hover{
+                color: v.$darkBlue;
+            }
+
+            &:hover::before{
+                transform-origin: left;
+                transform: scaleX(1);
+
+            }
+
+        }
+
+    }
+
+    &__cta{
+        
+        background:linear-gradient(to right,v.$limeGreen,v.$brightCyan);
+        color: v.$white;
+        font-weight: v.$bold;
+        padding: 0.9375rem 1.25rem;
+        border: none;
+        border-radius: 3.125rem;
+        cursor: pointer;
+
+        //active-desktop
+        &:hover{
+            opacity: 0.6;
+            transition: 0.3s;
+            
+        }
+
+    }
+
+
+    
+
+    
+
+
+
+}
+
+
+.overlay{
+    
+    z-index: 1;
+    background-image: linear-gradient(v.$darkBlue,transparent);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: 0.3s ease-in-out;
+
+    &__links{
+        background: v.$white;
+        margin: 23px;
+        flex-direction: column;
+        border-radius: 5px;
+
+        >a{
+            color: v.$darkBlue;
+            margin-top: 2rem;
+        }
+    }
+}
+
+
+@include m.breakpoint-up(large){
+    .header{
+
+        nav{
+            padding-left:10rem;
+            padding-right:10rem;
+        }
+
+    }
+}
